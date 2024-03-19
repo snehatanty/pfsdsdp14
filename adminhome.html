@@ -1,0 +1,61 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tourism Travel Management</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css'%}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css'%}"/>
+
+</head>
+<body>
+<a href="{% url 'registration'%}">Sign-up | </a>
+<a href="{% url 'login'%}">Login | </a>
+<a href="{% url ''%}"> Home | </a>
+<a href="{% url 'contact'%}"> Contact | </a>
+<a href="{% url 'about'%}"> About Us | </a>
+<a href="{% url ''%}"> Add Packages | </a>
+<a href="{% url 'viewplaces'%}"> View Packages | </a>
+<a href="{% url 'logout'%}"> Logout | </a>
+<a href="{% url 'mail' %}"> Sendmail</a>
+
+<br>
+{% block 'b1' %}
+<h2 align="center"><font color="green">Admin KLU Tourism & Travel Management</font></h2>
+<form method="post" action="{% url 'checkpackage' %}">
+    {% csrf_token %}
+    <table align="center" border="2">
+        <tr>
+            <td>Enter Tour Code</td>
+            <td><input type="text" name="tourcode"></td>
+        </tr>
+        <tr>
+            <td>Enter Tour Name</td>
+            <td><input type="text" name="tourname"></td>
+        </tr>
+        <tr>
+            <td>Enter Tour Package</td>
+            <td><input type="text" name="tourpackage"></td>
+        </tr>
+        <tr>
+            <td>Enter Tour Description</td>
+            <td><input type="text" name="tourdesc"></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" value="insert"</td>
+            <td align="center"><input type="reset" value="clear"></td>
+        </tr>
+    </table>
+</form>
+<div>
+     {% for message in messages %}
+    <h4 align="center" style="color: red;">{{message}}</h4>
+    {% endfor %}
+</div>
+{% endblock %}
+</br>
+</body>
+</html>
+
+
+
+
